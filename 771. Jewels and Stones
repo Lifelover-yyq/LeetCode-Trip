@@ -1,12 +1,18 @@
+Submit 1：
+
 class Solution:
     def numJewelsInStones(self, J, S):
-        """
-        :type J: str
-        :type S: str
-        :rtype: int
-        """
         num = 0
         for i in range(len(S)):
             if S[i] in J:
                 num = num + 1
+        return num
+        
+Submit 2:
+
+class Solution:
+    def numJewelsInStones(self, J, S):      
+        num = 0
+        for i in range(len(J)):
+           num = num + S.count(J[i])    #用一个string.count(str)字符串统计函数
         return num
