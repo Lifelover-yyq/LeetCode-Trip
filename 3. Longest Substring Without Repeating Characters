@@ -1,0 +1,22 @@
+'''
+求字符串的最长不重复子串问题，比较经典了，记得算法课讲过。
+画个图也知道该怎么移动，怎么计算，然而用代码实现起来就感觉很生硬- -
+直到看了讨论才恍然大悟……这不就是我的想法嘛……
+眼高手低，动手能力急需提高。
+'''
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        a = ''
+        sum = 0
+        for i in s:
+            if i not in a:
+                a += i
+                sum = max(sum,len(a))
+            else:
+                j = a.index(i)
+                a = a[j+1:] + i
+        return sum
