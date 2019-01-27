@@ -1,7 +1,7 @@
 '''
 给两个字符串J S，找出 在S中的且同样在J中的 S中元素的个数，其实就是统计J中元素在S中出现的次数。
 '''
-Submit 1：
+# solution 1
 
 class Solution:
     def numJewelsInStones(self, J, S):
@@ -11,7 +11,7 @@ class Solution:
                 num = num + 1
         return num
         
-Submit 2:
+# solution 2
 
 class Solution:
     def numJewelsInStones(self, J, S):      
