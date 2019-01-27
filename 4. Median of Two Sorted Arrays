@@ -1,0 +1,55 @@
+'''
+给出两个已排序数组（从小到大），求两个数组的中位数。
+
+思路：
+已排序的数组中位数应该很好求，通过索引计算就可以得到。两个数组的话就把它们合并起来再排序，然后很容易就得到了。不过题目有时间复杂度限制：O(log(m+n)).
+这对排序算法就有了限制，不过用Python自带的排序函数，因为已经优化过了，所以运行时间不会超，就是有点投机取巧……
+'''
+# solution 1
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """
+        a = nums1 + nums2
+        a.sort()
+        length = len(a)
+        if length%2 == 1:
+            return a[(length-1)//2]*1.0
+        else: return (a[length//2-1]+a[length//2])/2.0
+        
+# solution 2 （官方答案，用到中位数的作用，把数组分成两个部分，每个部分长度相等且max(left)<=min(right)）
+def median(A, B):
+    m, n = len(A), len(B)
+    if m > n:
+        A, B, m, n = B, A, n, m
+    if n == 0:
+        raise ValueError
+
+    imin, imax, half_len = 0, m, (m + n + 1) / 2
+    while imin <= imax:
+        i = (imin + imax) / 2
+        j = half_len - i
+        if i < m and B[j-1] > A[i]:
+            # i is too small, must increase it
+            imin = i + 1
+        elif i > 0 and A[i-1] > B[j]:
+            # i is too big, must decrease it
+            imax = i - 1
+        else:
+            # i is perfect
+
+            if i == 0: max_of_left = B[j-1]
+            elif j == 0: max_of_left = A[i-1]
+            else: max_of_left = max(A[i-1], B[j-1])
+
+            if (m + n) % 2 == 1:
+                return max_of_left
+
+            if i == m: min_of_right = B[j]
+            elif j == n: min_of_right = A[i]
+            else: min_of_right = min(A[i], B[j])
+
+            return (max_of_left + min_of_right) / 2.0
