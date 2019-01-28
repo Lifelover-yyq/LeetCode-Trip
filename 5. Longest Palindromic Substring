@@ -1,0 +1,45 @@
+'''
+求字符串的最长回文子串。想了半天没想到比较好的方法……看了看答案，一共有5种解法：
+1、最长公共子串：把给定字符串S反转得到S'，找两者的最长公共子串且索引相同的，即为S的最长回文子串
+2、蛮力法
+3、动态规划
+4、找中心点：本代码实现的解法，回文子串一定有中心点，长度为n的字符串有2n-1个中心点（字符和间隙），对每一个中心点遍历并左右判断得到长度，
+同时计算最长子串的索引位置。时间复杂度O(n^2)，空间复杂度O(1)。
+5、Manacher's Algorithm：一个非常规解法，时间复杂度仅为O(n).详见 https://articles.leetcode.com/longest-palindromic-substring-part-ii/
+
+不知道为啥没法调用函数expandAroundCenter()，明明定义了一直报未定义……
+'''
+class Solution:
+    def expandAroundCenter(self,s,left,right):
+        L,R = left,right
+        while L >= 0 and R < len(s) and s[L] == s[R]:
+            L = L - 1
+            R = R + 1
+        return R - L - 1
+    
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        start = end = 0    
+        for i in range(len(s)):
+        #    len1 = expandAroundCenter(s,i,i)
+        #    len2 = expandAroundCenter(s,i,i+1)
+            L1 = R1 = i
+            while L1 >= 0 and R1 < len(s) and s[L1] == s[R1]:
+                L1 = L1 - 1
+                R1 = R1 + 1
+            len1 = R1 - L1 - 1
+            L2,R2 = i,i+1
+            while L2 >= 0 and R2 < len(s) and s[L2] == s[R2]:
+                L2 = L2 - 1
+                R2 = R2 + 1
+            len2 = R2 - L2 - 1
+            length = max(len1,len2)
+            if length > end - start:
+                start = i - (length - 1) // 2
+                end = i + length // 2
+        substr = s[start:end + 1]
+        return substr
+    
