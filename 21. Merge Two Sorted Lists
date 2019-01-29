@@ -1,0 +1,24 @@
+'''
+今天刚装上固态硬盘，折腾了一晚上在装软件，磁盘合并。最后一点时间水一道简单的。
+合并两个已排序的单链表。曾经的做法是对两个链表遍历，比较大小并把小的指向next再比较，同时需要第三个链表来存储，复杂度较高。
+discuss里给出了一些递归做法，本代码只有几行：如果a和b均非空，确保a更小，递归的合并后续；否则返回a或b即可。
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def mergeTwoLists(self, a, b):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        if a and b:
+            if a.val > b.val:
+                a, b = b, a
+            a.next = self.mergeTwoLists(a.next, b)
+        return a or b
