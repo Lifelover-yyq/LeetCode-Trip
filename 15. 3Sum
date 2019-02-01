@@ -1,0 +1,36 @@
+'''
+给出一个int型数组，找出 其中三个数的和为0 的所有不重复组合。
+比如：Given array nums = [-1, 0, 1, 2, -1, -4], A solution set is: [ [-1, 0, 1] , [-1, -1, 2] ]
+刚看到题目最直接的思路就是蛮力……直接三个for循环找就完事了，这样确实可以找到所有结果，不过代价太高而且重复的组合没法剔除出来。
+容易理解的方法还是设左右两个指针：先排序，然后用一重for循环i做第一个数，j k分别取 i+1 和 len-1，用j k两个索引进行二次遍历找结果，
+过程中判断并去除重复数值。时间复杂度为O(n).
+最近做的几道题都是用左右两个指针的方法来减小复杂度，以后再遇到要能有意识的想起来。
+'''
+
+class Solution:
+    def threeSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result = []
+        nums.sort()
+        for i in range(len(nums) - 2):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue    # 重复元素不计算，跳过
+            j, k = i+1, len(nums) - 1
+            while j < k:
+                s = nums[i] + nums[j] + nums[k]
+                if s == 0:
+                    result.append([nums[i],nums[j],nums[k]])
+                    while j < k and nums[j] == nums[j+1]:
+                        j += 1 # 重复元素跳过
+                    while j < k and nums[k] == nums[k-1]:
+                        k -= 1 # 重复元素跳过
+                    j += 1
+                    k -= 1
+                elif s < 0:
+                    j += 1 # 和小于0，j自增
+                else:
+                    k -= 1 # 和大于0，k自减
+        return result
