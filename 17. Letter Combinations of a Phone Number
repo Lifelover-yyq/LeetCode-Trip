@@ -1,0 +1,32 @@
+'''
+给出一串2-9的数字，返回数字所对应字母的所有可能的组合，其实就是要求 给定集合的笛卡尔积 。
+数字and字母的对应规则就像手机九键键盘的对应规则，见代码中字典dict1.
+用递归加回溯的方法，每次把所有数字对应的字母加到当前string，继续递归的去加上下一个数字的所有字母，直到数字为空，把当前string append到列表中。
+'''
+class Solution:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        dict1 = {'1':'',
+                 '2':['a','b','c'],
+                 '3':['d','e','f'],
+                 '4':['g','h','i'],
+                 '5':['j','k','l'],
+                 '6':['m','n','o'],
+                 '7':['p','q','r','s'],
+                 '8':['t','u','v'],
+                 '9':['w','x','y','z']
+                }
+        # 递归回溯法
+        def backtrack(combination,next_digits):
+            if len(next_digits) == 0:   # 没有数字需要加了
+                output.append(combination)  # 把当前str加到list
+            else:
+                for i in dict1[next_digits[0]]: # 把当前数字对应的所有字母全加到当前str
+                    backtrack(combination + i, next_digits[1:]) # 对下一个数字进行递归操作
+        output = []
+        if digits:
+            backtrack('',digits)
+        return output
