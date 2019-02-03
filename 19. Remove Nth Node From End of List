@@ -1,0 +1,37 @@
+'''
+给定单链表，数字n，要求移除链表从后往前数第n个结点，返回移除后的链表。
+思路：
+一次遍历求得链表长度length，第二次遍历移除第length-n+1个结点即可，在头结点需要加一个新节点，防止一些特殊情况比如链表只有一个结点等情况。
+时间复杂度O(length)，空间复杂度O(1)。
+'''
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def removeNthFromEnd(self, head, n):
+        """
+        :type head: ListNode
+        :type n: int
+        :rtype: ListNode
+        """
+        length = flag = 0
+        new = ListNode(0)  # 新头结点
+        new.next = head
+        h = head
+        while h:
+            h = h.next
+            length += 1
+        n = length - n + 1 # 正数第 length-n+1 个      
+                            
+        h = new
+        while h:
+            flag += 1
+            if flag == n:
+                h.next = h.next.next
+                break
+            else:
+                h = h.next
+        return new.next
