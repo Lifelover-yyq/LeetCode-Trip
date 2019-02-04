@@ -1,0 +1,25 @@
+'''
+输入‘()[]{}’中任意字符，判断括号是否匹配正确。
+之前的数据结构课设中对表达式求值做过类似判断，用一个stack去push左括号，遇到右括号就跟pop的值比较。
+要注意栈中元素的个数，为空时不能pop，循环结束若stack不为空则返回false.
+
+今天除夕啦，偷个懒做一道简单题。晚上要看春晚and抽奖，下午先做了~
+'''
+
+class Solution:
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        dict1 = {'(':')','[':']','{':'}'}
+        stack = []
+        for i in s:
+            if i in dict1.keys():
+                stack.append(i)
+            elif len(stack) > 0 and i == dict1[stack.pop()]:
+                continue
+            else:
+                return False
+        if len(stack) > 0: return False
+        else: return True   
