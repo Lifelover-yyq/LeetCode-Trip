@@ -1,0 +1,20 @@
+'''
+给定一个整数n，求n对括号‘()’的所有合法组合情况，返回字符串列表。
+蛮力太费时间，不考虑。主要用递归回溯来做，每次记录左右括号的数量，若左括号小于n，则可以添加‘(’；若右括号小于左括号，则可以添加‘)’。
+数量达到2n则添加到列表。
+'''
+class Solution:
+    def generateParenthesis(self, n: 'int') -> 'List[str]':
+        ans = []
+        def backtrack(s = '', left = 0, right = 0):
+            if len(s) == 2 * n:
+                ans.append(s)
+                return
+            if left < n:
+                backtrack(s+'(', left+1, right)
+            if right < left:
+                backtrack(s+')', left, right+1)
+                
+        backtrack()
+        
+        return ans
