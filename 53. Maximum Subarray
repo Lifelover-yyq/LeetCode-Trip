@@ -1,0 +1,15 @@
+'''
+给定int型数组，求：和最大的邻近子序列，返回该和。
+discuss里有一个介绍了 Jon Bentley (Sep. 1984 Vol. 27 No. 9 Communications of the ACM P885)的算法：
+如果已知1 ~ n-1 的最大值max1，必须算上n的最大值则为 max1+n 和 n 中的较大者，然后比较当前 max 和算上 n 的 max1 取大即可。
+以此规律从第一个元素开始遍历就行了。
+'''
+class Solution:
+    def maxSubArray(self, nums: 'List[int]') -> 'int':
+        maxsum = maxhere = nums[0]
+        for i in nums[1:]:
+            maxhere = max(maxhere + i, i)
+            maxsum = max(maxhere,maxsum)
+        return maxsum
+            
+            
