@@ -1,0 +1,17 @@
+'''
+给定一int型列表，第i个值表示第i天的股票价格，只允许一次买入一次卖出，求该交易的最大利润。
+一次遍历，找到当前的最小值minprice，若当天价值 price - minprice 大于当前利润，则更改。
+
+邮件推荐过来的一道题，正好也不难就做这道了:)
+'''
+
+class Solution:
+    def maxProfit(self, prices: 'List[int]') -> 'int':
+        profit = 0
+        minprice = 2**64 - 1
+        for i in prices:
+            if i < minprice:
+                minprice = i
+            elif i - minprice > profit:
+                profit = i - minprice
+        return profit
