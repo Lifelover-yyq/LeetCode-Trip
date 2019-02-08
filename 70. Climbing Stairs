@@ -1,0 +1,20 @@
+'''
+爬楼梯，一次可以爬 1 或 2 阶，给定楼梯阶数n，求所有的爬法。
+这道题印象中曾经在杭电OJ上做过，属于简单题。实际上就是初值为 1,2 的斐波那契数列，dp[i] = dp[i-1] + dp[i-2]
+用Python写递归太容易超时了……Python初始化列表可太有意思了……学到了。。
+solution里给了6种方法，一个蛮力，其他的都大致类似，只是复杂度越来越低。
+哎，假期没有啥学习的欲望……只想水简单题……立下的flag还都没怎么完成……怕是要打脸了……
+'''
+class Solution:
+    def climbStairs(self, n: 'int') -> 'int':
+        if n == 1: return 1
+    #    if n == 2: return 2
+    #    return self.climbStairs(n-1) + self.climbStairs(n-2)
+        dp = [None] * n
+        dp[0] = 1
+        dp[1] = 2
+        i = 2
+        while  i < n:
+            dp[i] = dp[i-1] + dp[i-2]
+            i += 1
+        return dp[i-1]
