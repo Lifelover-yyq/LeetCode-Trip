@@ -1,0 +1,16 @@
+'''
+哎，自从上次去矿大聚会回来就没再刷过题……转眼都一周了……
+一道水题：求二叉树的深度，递归只需要两三行。
+'''
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def maxDepth(self, root: 'TreeNode') -> 'int':
+        if root == None: return 0
+        else:
+            return max(1 + self.maxDepth(root.left), 1 + self.maxDepth(root.right))
