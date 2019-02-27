@@ -1,0 +1,32 @@
+'''
+好久没刷过题了，假期里碰到hard也是直接跳，今天开始继续！
+给定一int型列表，求按字典排序的下一个排列列表，相当于对n个数字进行全排列，求当前排列的下一个排列。
+思路：从后往前进行遍历，找到第一个前数小于后数的位置i，再次从后往前找到一个刚刚比nums[i]小的nums[j]，
+交换两元素。然后把i+1位置之后的元素全部反转。
+这道题之前遇到过，当时没看懂，现在再看其实不难。但是，我特么被一个 <= >= 给整懵逼了！花了好久才AC……难受………………
+'''
+class Solution:
+    def nextPermutation(self, nums: 'List[int]') -> 'None':
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        def reverse(nums, i): # 将列表nums位置i开始之后所有内容反转
+            j = len(nums) - 1
+            while i < j:
+                nums[i], nums[j] = nums[j], nums[i]
+                i += 1
+                j -= 1
+        
+        i = len(nums) - 2
+        while i >= 0 and nums[i] >= nums[i+1]: # 找到第一个nums[i] < nums[i+1]的i
+            i -= 1
+        if i >= 0:
+            j = len(nums) - 1
+            while j >= 0 and nums[j] <= nums[i]: # 找到比nums[i]刚好大的nums[j]
+                j -= 1
+            nums[i], nums[j] = nums[j], nums[i] # 交换
+        start = i + 1
+        reverse(nums, start) # 反转位置i+1之后元素
+        
+        
+            
