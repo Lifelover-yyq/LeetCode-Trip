@@ -1,0 +1,29 @@
+'''
+心态崩了！！！
+研究院这个破网！！！
+真受不了了！
+给定：已排序列表，但经过一次循环移动，例如：
+[0,1,2,4,5,6,7] -> [4,5,6,7,0,1,2]，给定一目标值target，返回下标，找不到返回 -1。时间复杂度要求：O(logn)
+二分查找法，不说了，烦。
+'''
+class Solution:
+    def BinarySearch(self,nums, left, right, target):
+            if left > right: return -1
+            index = (left + right) // 2
+            if nums[index] == target:
+                return index
+            
+            if nums[left]<=nums[index]:
+                if nums[left]<=target<=nums[index]:
+                    return self.BinarySearch(nums,left,index-1,target)
+                return self.BinarySearch(nums,index+1,right,target)
+            elif nums[index]<=nums[right]:
+                if nums[index]<=target<=nums[right]:
+                    return self.BinarySearch(nums,index+1,right,target)
+                return self.BinarySearch(nums,left,index-1,target)
+            else:
+                return -1
+    def search(self, nums: List[int], target: int) -> int:
+   
+        if nums == []: return -1
+        return self.BinarySearch(nums, 0, len(nums)-1, target)
