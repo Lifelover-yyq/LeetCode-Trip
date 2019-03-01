@@ -1,0 +1,28 @@
+'''
+给定一排序列表和一目标值target，找出该值在列表中第一次出现和最后一次出现的位置，返回下标[f,l]，找不到返回[-1,-1]
+时间复杂度：O(log n)
+一看到复杂度要求自然想到用二分查找，找到目标值也继续，>=下标往左移，<=下标往右移，直到lo==hi，返回lo即可。
+'''
+class Solution:
+    def extreme_insertion_index(self, nums, target, left):
+        lo = 0
+        hi = len(nums)
+
+        while lo < hi:
+            mid = (lo + hi) // 2
+            # 大于或等于则往左侧找最小index
+            if nums[mid] > target or (left and target == nums[mid]): 
+                hi = mid  
+            # 小于或等于则往右侧找最大index
+            else: 
+                lo = mid + 1
+        return lo
+
+
+    def searchRange(self, nums, target):
+        left_idx = self.extreme_insertion_index(nums, target, True)
+       
+        if left_idx == len(nums) or nums[left_idx] != target:
+            return [-1, -1]
+
+        return [left_idx, self.extreme_insertion_index(nums, target, False)-1]
