@@ -1,0 +1,25 @@
+'''
+给定一 n*n 矩阵，将其在原地 顺时针旋转90度。比如：
+ [[1,2,3],       [[7,4,1],
+  [4,5,6],   ->   [8,5,2],
+  [7,8,9]]        [9,6,3]]
+看起来感觉不难，实际上也不难- -
+第一步：关于主对角线翻转：swap(matrix[i][j],matrix[j][i])
+第二步：水平翻转：swap(matrix[i][j],matrix[i][n-j-1]) # n = len(matrix)
+好久没刷题了，今天水一道……  
+'''
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        n = len(matrix)
+        
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j],matrix[j][i] = matrix[j][i],matrix[i][j]
+        
+        for i in range(n):
+            for j in range(n//2):
+                matrix[i][j],matrix[i][n-j-1] = matrix[i][n-j-1],matrix[i][j]
+        
