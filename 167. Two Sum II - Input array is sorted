@@ -1,0 +1,19 @@
+'''
+给定一已排序数组，找到两个数字的和为目标值，返回 下标+1。
+我可真是水，Easy题都要看discuss……
+对于已排序数组问题，多用 二分查找 和 两头指针 来解决。
+'''
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        i,j = 0, len(numbers) - 1
+        answer = []
+        while i < j:
+            if numbers[i] + numbers[j] > target:
+                j -= 1
+            elif numbers[i] + numbers[j] < target:
+                i += 1
+            else:
+                answer.append(i+1)
+                answer.append(j+1)
+                break
+        return answer
