@@ -6,7 +6,7 @@
 * 嗯……
 
 ## 按照难度和序号分类整理
-### easy
+### Easy
 - [20.Valid Parentheses](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/20.%20Valid%20Parentheses)
 - [21.Merge Two Sorted Lists](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/21.%20Merge%20Two%20Sorted%20Lists)
 - [53.Maximum Subarray](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/53.%20Maximum%20Subarray)
@@ -14,7 +14,9 @@
 - [101.Symmetric Tree](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/101.%20Symmetric%20Tree)
 - [104.Maximum Depth of Binary Tree](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/104.%20Maximum%20Depth%20of%20Binary%20Tree)
 - [121.Best Time to Buy and Sell Stock](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
-### medium
+- [167. Two Sum II - Input array is sorted](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted
+)
+### Medium
 - [2.Add Two Numbers](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/2.%20Add%20Two%20Numbers)
 - [3.Longest Substring Without Repeating Characters](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters)
 - [5.Longest Palindromic Substring](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/5.%20Longest%20Palindromic%20Substring)
@@ -28,5 +30,5 @@
 - [34.Find First and Last Position of Element in Sorted Array](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 - [48.Rotate Image](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/48.%20Rotate%20Image)
 
-### hard
+### Hard
 - [4.Median of Two Sorted Arrays](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays)
