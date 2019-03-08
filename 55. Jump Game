@@ -1,0 +1,19 @@
+'''
+给定一int型非负数组，从第一个元素开始，每个值代表可以在数组内跳跃的下标长度，判断是否可以跳到最后一个元素。
+本打算用Python切片的方式递归的去做，结果return的是null而不是回到上一次递归的地方……
+solution里的贪心算法真牛皮，学到了：从最后一个元素往前判断，最后能跳回 0 则为True，否则为False。
+'''
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+#         if nums[0] == 0 and len(nums) > 1:
+#             return
+#         elif len(nums) == 1:
+#             return True
+#         for i in range(1,nums[0]+1):
+#             return self.canJump(nums[i:])
+#         return False
+        lastpos = len(nums) - 1
+        for i in range(len(nums)-1,-1,-1):
+            if i + nums[i] >= lastpos:
+                lastpos = i
+        return lastpos == 0
