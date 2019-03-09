@@ -14,8 +14,8 @@
 - [101. Symmetric Tree](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/101.%20Symmetric%20Tree)
 - [104. Maximum Depth of Binary Tree](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/104.%20Maximum%20Depth%20of%20Binary%20Tree)
 - [121. Best Time to Buy and Sell Stock](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/121.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock)
-- [167. Two Sum II - Input array is sorted](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted
-)
+- [167. Two Sum II - Input array is sorted](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/167.%20Two%20Sum%20II%20-%20Input%20array%20is%20sorted)
+
 ### Medium
 - [2. Add Two Numbers](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/2.%20Add%20Two%20Numbers)
 - [3. Longest Substring Without Repeating Characters](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/3.%20Longest%20Substring%20Without%20Repeating%20Characters)
@@ -30,6 +30,7 @@
 - [34. Find First and Last Position of Element in Sorted Array](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/34.%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array)
 - [48. Rotate Image](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/48.%20Rotate%20Image)
 - [55. Jump Game](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/55.%20Jump%20Game)
+- [62. Unique Paths](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/62.%20Unique%20Paths)
 
 ### Hard
 - [4. Median of Two Sorted Arrays](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/4.%20Median%20of%20Two%20Sorted%20Arrays)
