@@ -6,7 +6,7 @@
 * 嗯……
 * 19.10.22：鸽了这么久，我又回来了……主要在实验室天天没啥事，过于佛系，刷刷题吧……
 
-## 按照难度和序号分类整理
+## ~~按照难度和序号分类整理~~（改用文件夹直接存放）
 ### Easy
 - [20. Valid Parentheses](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/20.%20Valid%20Parentheses)
 - [21. Merge Two Sorted Lists](https://github.com/Lifelover-yyq/LeetCode-Trip/blob/master/21.%20Merge%20Two%20Sorted%20Lists)
