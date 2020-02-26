@@ -46,7 +46,7 @@
 ]
 ```
 - 思路：递归回溯问题，本科课设2的时候用过，昨天刷的组合总和问题的同类问题，可以套用固定模板。代码如下：
-```
+```cpp
 class Solution {
 public:
     vector<int> path;
@@ -73,7 +73,7 @@ public:
     }
 };
 ```
-### [48. Rotate Image]
+### [48. 旋转图像](https://leetcode-cn.com/problems/rotate-image/)
 
 - [55. Jump Game]
 - [62. Unique Paths]
