@@ -80,3 +80,56 @@ public:
 
 ## Hard
 - [4. Median of Two Sorted Arrays]
+### [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
+- 题目描述：给你一个字符串 S、一个字符串 T，请在字符串 S 里面找出：包含 T 所有字母的最小子串。
+- 示例：
+```
+输入: S = "ADOBECODEBANC", T = "ABC"
+输出: "BANC"
+说明：
+如果 S 中不存这样的子串，则返回空字符串 ""。
+如果 S 中存在这样的子串，我们保证它是唯一的答案。
+```
+- 思路：经典的滑动窗口问题，设置左右两个指针，右指针移动负责寻找可行解，找到以后左指针移动负责优化解，直到右指针到达尾部。
+- 来源：题解里的[该回答](https://leetcode-cn.com/problems/minimum-window-substring/solution/hua-dong-chuang-kou-suan-fa-tong-yong-si-xiang-by-/)很清晰详细的给出了思路过程。
+```cpp
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        unordered_map<char, int> window;
+        unordered_map<char, int> needs;
+        int left = 0,right = 0;
+        int start = 0,minlen = INT_MAX;
+        for(char c:t)needs[c]++;
+        
+        int match = 0;
+        
+        while(right < s.size()) {
+            char c1 = s[right];
+            if(needs.count(c1)) {
+                window[c1]++;
+                if(window[c1] == needs[c1])
+                    match++;
+            }
+            right++;
+            
+            while(match == needs.size()) {
+                if(right - left < minlen) {
+                    start = left;
+                    minlen = right - left;
+                }
+                char c2 = s[left];
+                if(needs.count(c2)) {
+                    window[c2]--;
+                    if(window[c2] < needs[c2])
+                    match--;
+                }
+                left++;
+            }
+        }
+        return minlen == INT_MAX ? "" : s.substr(start,minlen);
+    }
+};
+```
+
+
