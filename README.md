@@ -18,6 +18,7 @@
 - [121. Best Time to Buy and Sell Stock]
 - [167. Two Sum II - Input array is sorted]
 
+
 ## Medium
 - [2. Add Two Numbers]
 - [3. Longest Substring Without Repeating Characters]
@@ -77,7 +78,59 @@ public:
 
 - [55. Jump Game]
 - [62. Unique Paths]
+### [79. 单词搜索](https://leetcode-cn.com/problems/word-search/)
+- 题目描述：给定一个二维网格和一个单词，找出该单词是否存在于网格中。单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
+- 示例：
+```
+board =
+[
+  ['A','B','C','E'],
+  ['S','F','C','S'],
+  ['A','D','E','E']
+]
 
+给定 word = "ABCCED", 返回 true.
+给定 word = "SEE", 返回 true.
+给定 word = "ABCB", 返回 false.
+
+```
+- 思路：递归回溯，对于数组中每一个字母，向其上下左右进行搜索比对，相同则继续，不同则回溯，需要留意的是边界条件的判断。然而写的第一版代码在第85个测试用例卡住了，不是超时就是超空间，看了评论不止我一个，据说是形参传值还是传引用的差异。
+```cpp
+class Solution {
+public:
+     bool dfs(vector<vector<char>>& board, string& word, int index, int x, int y) {
+        if(board[x][y] != word[index])
+            return false;
+        if(index == word.size() - 1)
+            return true;
+        char tmp = board[x][y];
+        board[x][y] = '0';
+        index++;
+        if((x > 0 && dfs(board,word,index,x-1,y)) // up
+           || (y > 0 && dfs(board,word,index,x,y-1)) // left
+           || (x < board.size() - 1 && dfs(board,word,index,x+1,y)) // down
+           || (y < board[0].size() - 1 && dfs(board,word,index,x,y+1))){// right
+             return true;
+        }          
+        board[x][y] = tmp;
+        return false;
+    }
+    bool exist(vector<vector<char>>& board, string word) {
+        for(int i=0;i<board.size();i++){
+             for(int j=0;j<board[0].size();j++){
+                  if(dfs(board, word, 0, i, j))
+                      return true;
+             }
+        }                                             
+        return false;
+    }
+};
+```
+- 放上第85个测试用例，堪称有毒。
+```
+[["a","a","a","a"],["a","a","a","a"],["a","a","a","a"],["a","a","a","a"],["a","a","a","b"]]
+"aaaaaaaaaaaaaaaaaaaa"
+```
 ## Hard
 - [4. Median of Two Sorted Arrays]
 ### [76. 最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
